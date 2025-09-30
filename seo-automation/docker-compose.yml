@@ -1,0 +1,100 @@
+version: '3.8'
+
+services:
+  seo-automation:
+    build: .
+    container_name: muslim-google-seo
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./generated-pages:/app/generated-pages
+      - ./logs:/app/logs
+      - ./backups:/app/backups
+      - ./sitemaps:/app/sitemaps
+      - ./monitoring:/app/monitoring
+      - ./data:/app/data
+    environment:
+      - NODE_ENV=production
+      - TZ=UTC
+      - SEO_SCHEDULE=0 */6 * * *  # Every 6 hours
+      - SEO_BATCH_SIZE=100
+      - SEO_MAX_PAGES=20000
+      - SEO_UPDATE_FREQUENCY=daily
+      - SEO_MONITORING_ENABLED=true
+      - SEO_ANALYTICS_ENABLED=true
+    networks:
+      - seo-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  seo-scheduler:
+    build: .
+    container_name: seo-scheduler
+    restart: unless-stopped
+    command: ["node", "seo-scheduler.js"]
+    volumes:
+      - ./generated-pages:/app/generated-pages
+      - ./logs:/app/logs
+      - ./sitemaps:/app/sitemaps
+    environment:
+      - NODE_ENV=production
+      - SEO_SCHEDULE=0 */6 * * *
+      - SEO_BATCH_SIZE=100
+      - SEO_MAX_PAGES=20000
+    networks:
+      - seo-network
+    depends_on:
+      - seo-automation
+
+  seo-monitor:
+    build: .
+    container_name: seo-monitor
+    restart: unless-stopped
+    command: ["node", "seo-monitor.js"]
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./monitoring:/app/monitoring
+      - ./logs:/app/logs
+    environment:
+      - NODE_ENV=production
+      - MONITORING_PORT=3001
+      - SEO_ANALYTICS_ENABLED=true
+    networks:
+      - seo-network
+    depends_on:
+      - seo-automation
+
+  seo-deployer:
+    build: .
+    container_name: seo-deployer
+    restart: unless-stopped
+    command: ["node", "seo-deployer.js"]
+    volumes:
+      - ./generated-pages:/app/generated-pages
+      - ./deployment:/app/deployment
+    environment:
+      - NODE_ENV=production
+      - DEPLOYMENT_TARGET=production
+      - DEPLOYMENT_FREQUENCY=hourly
+    networks:
+      - seo-network
+    depends_on:
+      - seo-automation
+
+networks:
+  seo-network:
+    driver: bridge
+
+volumes:
+  seo-pages:
+    driver: local
+  seo-logs:
+    driver: local
+  seo-backups:
+    driver: local
