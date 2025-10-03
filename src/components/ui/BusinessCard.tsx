@@ -4,7 +4,7 @@ import { haversineKm, formatKm } from '@/utils/geo';
 import { Link } from "react-router-dom";
 import type { SyntheticEvent } from "react";
 import { useState, useEffect } from "react";
-import { GooglePlacesService } from '@/lib/services/googlePlacesService.ts';
+import { GooglePlacesService } from '@/lib/services/googlePlacesService';
 import "./BusinessCard.css";
 
 export interface BusinessCardProps {
