@@ -1,0 +1,210 @@
+/* External CSS for BusinessCard component */
+
+.business-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  overflow: hidden;
+  transition: all 0.3s;
+  text-decoration: none !important;
+  color: inherit !important;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.business-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  border-color: #D4AF37;
+}
+
+/* Image container - 3/4 of card height */
+.business-image {
+  position: relative;
+  width: 100%;
+  height: 288px; /* h-72 equivalent for 3/4 of card */
+  overflow: hidden;
+  background-color: #f3f4f6;
+}
+
+/* Actual image */
+.business-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.business-card:hover .business-image img {
+  transform: scale(1.05);
+}
+
+/* Content area */
+.business-content {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #FBF5E6;
+}
+
+/* Business name */
+.business-name {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.25rem;
+  line-height: 1.4;
+}
+
+/* Business type */
+.business-type {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+/* Location display */
+.business-location {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.75rem;
+}
+
+.location-icon {
+  margin-right: 0.25rem;
+  flex-shrink: 0;
+  color: #ef4444;
+}
+
+/* Address row */
+.business-address {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  color: #4b5563;
+  margin-bottom: 0.25rem;
+}
+
+.address-icon {
+  margin-right: 0.25rem;
+  flex-shrink: 0;
+  color: #f59e0b;
+}
+
+/* Contact info */
+.business-contact {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.phone-icon {
+  color: #10b981;
+}
+
+.contact-text {
+  color: #111827;
+  text-decoration: none;
+}
+
+.contact-text:hover {
+  text-decoration: underline;
+}
+
+/* Rating display */
+.business-rating {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+
+.rating-icon {
+  color: #D4AF37;
+  fill: #D4AF37;
+  margin-right: 0.25rem;
+}
+
+/* Badges */
+.premium-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: linear-gradient(135deg, #D4AF37, #b38728);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.featured-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: linear-gradient(135deg, #008080, #096A60);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+.business-card-body .status:not(.closed) {
+  background-color: #d1fae5;
+  color: #047857;
+  border: 1px solid #10b981;
+}
+
+.business-card-body .status.closed {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #ef4444;
+}
+
+.business-card-body .truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Debug overlay for image testing */
+.image-debug-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 0.75rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 5;
+  padding: 0.5rem;
+}
+
+.business-card-image:hover .image-debug-overlay {
+  opacity: 1;
+}
