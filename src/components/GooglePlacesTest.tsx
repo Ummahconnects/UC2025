@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GooglePlacesService } from '../lib/services/googlePlacesService';
+import { GooglePlacesService } from '@/lib/services/googlePlacesService';
 
 const GooglePlacesTest: React.FC = () => {
   const [testResults, setTestResults] = useState<any>(null);
