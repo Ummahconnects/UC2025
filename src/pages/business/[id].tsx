@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import type { BusinessWithDetails } from "@/types/business";
-import { BusinessService } from "@/lib/services/businessService.ts";
+import { BusinessService } from "../../lib/services/businessService.ts";
 import { 
   MapPin, 
   Phone, 
