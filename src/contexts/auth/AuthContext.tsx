@@ -8,7 +8,7 @@ import {
 } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { User, Session, AuthChangeEvent } from '@supabase/supabase-js';
-import { supabase } from '@/lib/supabaseClient.ts';
+import { supabaseClient as supabase } from '@/lib/supabaseClient.ts';
 
 interface AuthContextType {
   user: User | null;
