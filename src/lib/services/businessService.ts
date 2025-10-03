@@ -1,4 +1,4 @@
-import { supabaseClient as supabase } from '@/lib/supabaseClient';
+import { supabaseClient as supabase } from '@/lib/supabaseClient.ts';
 
 type NormalizedBusiness = {
   id: string | number;

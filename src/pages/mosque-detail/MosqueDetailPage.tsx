@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { supabaseClient as supabase } from "@/lib/supabaseClient";
+import { supabaseClient as supabase } from "@/lib/supabaseClient.ts";
 import { MosqueService } from "@/lib/services/mosqueService";
 import ReviewSection from "@/components/reviews/ReviewSection";
 import LoadingSpinner from "@/components/LoadingSpinner";

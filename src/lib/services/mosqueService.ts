@@ -1,4 +1,4 @@
-import { supabaseClient as supabase } from '@/lib/supabaseClient';
+import { supabaseClient as supabase } from '@/lib/supabaseClient.ts';
 
 // Calculate distance between two coordinates using Haversine formula
 function calculateDistance(lat1: number, lng1: number, lat2: number, lng2: number): number {
