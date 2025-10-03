@@ -9,7 +9,7 @@ import { Checkbox } from "../../components/ui/Checkbox.tsx";
 // import { LocationContext } from "../../contexts/location/LocationContext"; 
 // import * as React from "react"; 
 import BusinessesContent from "./BusinessesContent";
-import { BusinessService } from "@/lib/services/businessService";
+import { BusinessService } from "@/lib/services/businessService.ts";
 import { useLocationContext } from "@/contexts/location/useLocationContext";
 import type { BusinessWithDetails } from "@/types/business";
 
