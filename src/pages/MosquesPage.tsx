@@ -1,7 +1,7 @@
 // src/pages/MosquesPage.tsx
 import { useState, useEffect } from "react";
 import { supabaseClient as supabase } from "@/lib/supabaseClient.ts";
-import { MosqueService } from '@/lib/services/mosqueService';
+import { MosqueService } from '@/lib/services/mosqueService.ts';
 import MosquesHeader from "./mosques/MosquesHeader";
 import MosquesContent from "./mosques/MosquesContent";
 import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
